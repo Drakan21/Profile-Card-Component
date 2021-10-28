@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+$dark_cyan: hsl(185, 75%, 39%);
+$dark_blue: hsl(229, 23%, 23%);
+$grey_blue: hsl(227, 10%, 46%);
+$dark_grey: hsl(0, 0%, 59%);
+$black: hsl(0, 100%, 0%);
+$white: hsl(255, 100%, 100%);
+
+@mixin base_font {
+  font-size: 18px;
+  font-family: "Kumbh Sans";
+  font-weight: 400;
+  color: $grey_blue;
+}
+
+@mixin impact {
+  font-weight: 700;
+  color: $black;
+}
+@mixin flex_col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex_row {
+  display: flex;
+  flex-direction: row;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @include base_font;
+  background-color: $dark_cyan;
+}
+
+#bg1 {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  transform: translate(-50%, -40%);
+  background: url("../images/bg-pattern-top.svg") bottom right/cover no-repeat;
+}
+#bg2 {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  transform: translate(50%, 40%);
+  background: url("../images/bg-pattern-bottom.svg") top left/cover no-repeat;
+}
+
+.profile {
+  @include flex_col;
+  height: 100vh;
+  width: 100vw;
+}
+
+.card {
+  margin: auto;
+  width: 90%;
+  max-width: 375px;
+  min-width: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0px 10px 20px 20px hsla(229, 23%, 23%, 0.1);
+}
+
+.card_top {
+  background: url("../images/bg-pattern-card.svg");
+  width: 100%;
+  height: 150px;
+}
+
+.card_bottom {
+  @include flex_col;
+  background-color: $white;
+  width: 100%;
+}
+
+.personal {
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+
+  img {
+    border-radius: 50%;
+    border: 4px solid $white;
+    position: absolute;
+    top: -30%;
+  }
+}
+
+.details {
+  padding: 75px 0px 25px 0px;
+  width: 100%;
+
+  .group1 {
+    @include flex_row;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    .name {
+      @include impact;
+    }
+  }
+
+  .group2 {
+    text-align: center;
+  }
+}
+
+.divider {
+  width: 100%;
+  background-color: lightgray;
+  height: 1px;
+}
+
+.statistics {
+  @include flex_row;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 20px;
+
+  .stat {
+    text-align: center;
+    margin: 0px 25px;
+
+    .number {
+      @include impact;
+      font-size: 1.2rem;
+    }
+
+    small {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.attribution {
+  font-size: 0.8rem;
+  text-align: center;
+
+  a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+  }
+  .card {
+    max-width: 360px;
+  }
+}
